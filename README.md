@@ -2,6 +2,18 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.3.
 
+## Required packages
+
+@angular/cli
+@agm/core
+@ngrx/core
+@ngrx/store
+
+##Important!
+
+This is only ONE of the MANY approaches using Redux. If you have any questions regarding this project, feel free to contact me. Use wisely =)
+
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
@@ -26,7 +38,3 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
 
-## Please run
-npm install -g @angular/cli
-npm install @ngrx/core @ngrx/store --save
-npm install @agm/core --save
