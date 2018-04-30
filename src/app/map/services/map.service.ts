@@ -3,7 +3,8 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 
 @Injectable()
 export class MapService {
-    constructor(private http: HttpClient) { }
+    constructor(private http: HttpClient) {
+    }
 
     getMapData() {
         const baseUrl = 'assets/mapdata.json';

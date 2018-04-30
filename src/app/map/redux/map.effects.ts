@@ -21,15 +21,15 @@ export class MapEffects {
     ) { }
 
     @Effect()
-    public getMapHotel$: Observable<Action> = this.actions
+    public getMapData$: Observable<Action> = this.actions
         .ofType(mapActions.ActionTypes.GET_MAP_DATA)
-        .switchMap((action: mapActions.GetMapData) => {
+        .switchMap((action: mapActions.GetMapDataAction) => {
             return this.mapService
                 .getMapData()
-                .map((data: any) => new mapActions.GetMapDataSuccess(data))
+                .map((data: any) => new mapActions.GetMapDataSuccessAction(data))
                 .catch(error =>
                     Observable.of(
-                        new mapActions.GetMapDataFail(error)
+                        new mapActions.GetMapDataFailAction(error)
                     )
                 );
         });

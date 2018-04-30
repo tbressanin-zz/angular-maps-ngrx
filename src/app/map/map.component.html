@@ -1,4 +1,4 @@
 <div class="title">Angular Maps NGRX</div>
-<agm-map [latitude]="defaults.lat" [longitude]="defaults.lng">
-  <agm-marker [latitude]="defaults.lat" [longitude]="defaults.lng"></agm-marker>
+<agm-map [latitude]="defaults.latitude" [longitude]="defaults.longitude" [zoom]="defaults.zoom" [minZoom]="defaults.minZoom">
+  <agm-marker *ngFor="let marker of markers" (markerClick)="clickMarker(marker)" [latitude]="marker.latitude" [longitude]="marker.longitude"></agm-marker>
 </agm-map>

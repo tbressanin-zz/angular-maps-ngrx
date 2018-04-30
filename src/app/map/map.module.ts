@@ -33,11 +33,14 @@ const providers = [MapService];
     imports: [
         BrowserModule,
         CommonModule,
+        EffectsModule.forRoot([MapEffects]),
+        StoreModule.forFeature('map', mapReducers.reducers),
+        StoreModule.forRoot({}),
         AgmCoreModule.forRoot({
             apiKey: 'AIzaSyA6SW5u0cc1VkwmeIhhihwYklseRwzcMAw'
         })
     ],
-    providers: [providers],
+    providers: providers,
     bootstrap: [MapComponent]
 })
 export class MapModule {

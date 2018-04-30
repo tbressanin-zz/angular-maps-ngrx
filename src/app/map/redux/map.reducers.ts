@@ -5,7 +5,8 @@ export interface State {
     data?: any;
 }
 
-export const initialState: State = {};
+export const initialState: State = {
+};
 
 export function reducers(state: State = initialState, action: Actions): State {
     switch (action.type) {
@@ -36,5 +37,9 @@ export const getMapState = createFeatureSelector<State>('map');
 
 export const getState = createSelector(
     getMapState,
+    (state: State) => state
+);
+export const getMapData = createSelector(
+    getState,
     (state: State) => state.data
 );
