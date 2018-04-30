@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+
+import * as mapReducers from '../map/redux/map.reducers';
+import * as mapActions from '../map/redux/map.actions';
 
 @Component({
   selector: 'app-map',
@@ -6,7 +10,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./map.component.scss']
 })
 export class MapComponent implements OnInit {
-  constructor() { }
+  constructor(private store: Store<mapReducers.State>) {
+  }
 
   // Title
   defaults = {
