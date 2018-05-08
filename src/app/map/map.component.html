@@ -1,4 +1,10 @@
 <div class="title">Angular Maps NGRX</div>
 <agm-map [latitude]="defaults.latitude" [longitude]="defaults.longitude" [zoom]="defaults.zoom" [minZoom]="defaults.minZoom">
-  <agm-marker *ngFor="let marker of markers" (markerClick)="clickMarker(marker)" [latitude]="marker.latitude" [longitude]="marker.longitude"></agm-marker>
-</agm-map>
+  <agm-marker *ngFor="let marker of markers" (markerClick)="clickMarker(marker)" [latitude]="marker.latitude" [longitude]="marker.longitude">
+    <agm-snazzy-info-window [maxWidth]="350" [maxHeight]="350" [closeWhenOthersOpen]="true">
+      <ng-template>
+        <img src="{{marker.avatar}}">
+      </ng-template>
+    </agm-snazzy-info-window>
+  </agm-marker>
+</agm-map>  

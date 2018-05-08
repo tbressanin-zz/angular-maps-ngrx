@@ -3,6 +3,7 @@ import { NgModule, ModuleWithProviders } from '@angular/core';
 
 // AGM (AngularMaps) Module
 import { AgmCoreModule } from '@agm/core';
+import { AgmSnazzyInfoWindowModule } from '@agm/snazzy-info-window';
 
 // ngrx modules
 import { StoreModule, } from '@ngrx/store';
@@ -38,7 +39,8 @@ const providers = [MapService];
         StoreModule.forRoot({}),
         AgmCoreModule.forRoot({
             apiKey: 'AIzaSyA6SW5u0cc1VkwmeIhhihwYklseRwzcMAw'
-        })
+        }),
+        AgmSnazzyInfoWindowModule
     ],
     providers: providers,
     bootstrap: [MapComponent]
