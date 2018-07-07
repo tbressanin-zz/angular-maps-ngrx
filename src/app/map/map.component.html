@@ -1,9 +1,9 @@
 <div class="title">Angular Maps NGRX</div>
-<agm-map [latitude]="defaults.latitude" [longitude]="defaults.longitude" [zoom]="defaults.zoom" [minZoom]="defaults.minZoom">
-  <agm-marker *ngFor="let marker of markers" (markerClick)="clickMarker(marker)" [latitude]="marker.latitude" [longitude]="marker.longitude">
-    <agm-snazzy-info-window [maxWidth]="350" [maxHeight]="350" [closeWhenOthersOpen]="true">
+<agm-map [latitude]="defaults.latitude" [longitude]="defaults.longitude" [zoom]="defaults.zoom" [minZoom]="defaults.minZoom" (mapClick)="resetAnimation()">
+  <agm-marker *ngFor="let marker of markers" (markerClick)="clickMarker(marker)" [latitude]="marker.latitude" [longitude]="marker.longitude" [animation]="marker.animation">
+    <agm-snazzy-info-window [maxWidth]="350" [maxHeight]="350" [closeWhenOthersOpen]="true" closeOnMapClick="true">
       <ng-template>
-        <img src="{{marker.avatar}}">
+        <img src="{{marker?.avatar}}">
       </ng-template>
     </agm-snazzy-info-window>
   </agm-marker>

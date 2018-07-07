@@ -28,6 +28,7 @@
     "core-js": "^2.5.7",
     "hoek": "^5.0.3",
     "rxjs": "^5.5.11",
+    "snazzy-info-window": "^1.1.1",
     "zone.js": "^0.8.19"
   },
   "devDependencies": {

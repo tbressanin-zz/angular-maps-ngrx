@@ -33,19 +33,32 @@ export class MapComponent implements OnInit {
       .subscribe((data: any) => {
         if (data) {
           data.location.map(item => {
-            this.markers.push({
-              code: item.code,
-              latitude: item.latitude,
-              longitude: item.longitude,
-              avatar: item.avatar
-            });
+            this.setTimer(item);
           });
         }
       });
   }
 
-  clickMarker(m) {
-    console.log('do anything', m);
+
+  setTimer(item) {
+    setTimeout(() => {
+      this.markers.push({
+        code: item.code,
+        latitude: item.latitude,
+        longitude: item.longitude,
+        avatar: item.avatar,
+        animation: 'DROP'
+      });
+    }, 1000);
+
+  }
+
+  clickMarker(m: IMarkers) {
+    m.animation = 'BOUNCE';
+  }
+
+  resetAnimation() {
+    this.markers.map(item => item.animation = null);
   }
 
   dispatch() {
