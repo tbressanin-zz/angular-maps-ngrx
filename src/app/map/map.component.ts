@@ -39,7 +39,6 @@ export class MapComponent implements OnInit {
       });
   }
 
-
   setTimer(item) {
     setTimeout(() => {
       this.markers.push({
