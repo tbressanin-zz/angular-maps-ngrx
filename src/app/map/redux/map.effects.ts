@@ -2,12 +2,9 @@ import { Injectable } from '@angular/core';
 
 import { Effect, Actions } from '@ngrx/effects';
 import { Action } from '@ngrx/store';
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/observable/of';
-import 'rxjs/add/operator/catch';
-import 'rxjs/add/operator/debounceTime';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/switchMap';
+import { of, Observable } from 'rxjs';
+import { map, catchError, switchMap } from 'rxjs/operators';
+
 
 import * as mapActions from '../redux/map.actions';
 import { MapService } from '../services/map.service';
@@ -23,14 +20,16 @@ export class MapEffects {
     @Effect()
     public getMapData$: Observable<Action> = this.actions
         .ofType(mapActions.ActionTypes.GET_MAP_DATA)
-        .switchMap((action: mapActions.GetMapDataAction) => {
+        .pipe(switchMap((action: mapActions.GetMapDataAction) => {
             return this.mapService
                 .getMapData()
-                .map((data: any) => new mapActions.GetMapDataSuccessAction(data))
-                .catch(error =>
-                    Observable.of(
-                        new mapActions.GetMapDataFailAction(error)
+                .pipe(map((data: any) => new mapActions.GetMapDataSuccessAction(data))
+                    , catchError(error =>
+                        of(
+                            new mapActions.GetMapDataFailAction(error)
+                        )
                     )
                 );
-        });
+        })
+        );
 }

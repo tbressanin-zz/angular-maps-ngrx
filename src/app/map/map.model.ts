@@ -10,4 +10,5 @@ export interface IMarkers {
     latitude: number;
     longitude: number;
     avatar: string;
+    animation?: string;
 }
