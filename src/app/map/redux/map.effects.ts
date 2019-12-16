@@ -1,9 +1,10 @@
+import { ActionTypes } from './map.actions';
 import { Injectable } from '@angular/core';
 
-import { Effect, Actions } from '@ngrx/effects';
+import { Effect, Actions, ofType } from '@ngrx/effects';
 import { Action } from '@ngrx/store';
 import { of, Observable } from 'rxjs';
-import { map, catchError, switchMap } from 'rxjs/operators';
+import { map, catchError, switchMap, mergeMap } from 'rxjs/operators';
 
 
 import * as mapActions from '../redux/map.actions';
@@ -19,17 +20,18 @@ export class MapEffects {
 
     @Effect()
     public getMapData$: Observable<Action> = this.actions
-        .ofType(mapActions.ActionTypes.GET_MAP_DATA)
-        .pipe(switchMap((action: mapActions.GetMapDataAction) => {
-            return this.mapService
-                .getMapData()
-                .pipe(map((data: any) => new mapActions.GetMapDataSuccessAction(data))
-                    , catchError(error =>
-                        of(
-                            new mapActions.GetMapDataFailAction(error)
+        .pipe(
+            ofType(ActionTypes.GET_MAP_DATA),
+            mergeMap(() => {
+                return this.mapService
+                    .getMapData()
+                    .pipe(map((data: any) => new mapActions.GetMapDataSuccessAction(data))
+                        , catchError(error =>
+                            of(
+                                new mapActions.GetMapDataFailAction(error)
+                            )
                         )
-                    )
-                );
-        })
+                    );
+            })
         );
 }

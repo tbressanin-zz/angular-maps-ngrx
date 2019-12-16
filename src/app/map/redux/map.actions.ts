@@ -14,7 +14,8 @@ export class GetMapDataAction implements Action {
 
 export class GetMapDataSuccessAction implements Action {
     public type: string = ActionTypes.GET_MAP_DATA_SUCCESS;
-    constructor(public payload?: any) { }
+    constructor(public payload?: any) {
+    }
 }
 
 export class GetMapDataFailAction implements Action {
