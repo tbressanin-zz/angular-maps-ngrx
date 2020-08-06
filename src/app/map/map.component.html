@@ -1,10 +1,16 @@
-<div class="title">Angular Maps NGRX</div>
-<agm-map [latitude]="defaults.latitude" [longitude]="defaults.longitude" [zoom]="defaults.zoom" [minZoom]="defaults.minZoom" (mapClick)="resetAnimation()">
-  <agm-marker *ngFor="let marker of markers" (markerClick)="clickMarker(marker)" [latitude]="marker.latitude" [longitude]="marker.longitude" [animation]="marker.animation">
+<div class="title">
+  <p>Distância: {{(distancePoints) || 'Não definido'}}</p>
+  <p>Ponto A: {{positionA?.latitude || 'Não definido'}} {{positionA?.longitude|| 'Não definido'}} </p>
+  <p>Ponto B: {{positionB?.latitude || 'Não definido'}} {{positionB?.longitude|| 'Não definido'}} </p>
+</div>
+<agm-map [latitude]="defaults.latitude" [longitude]="defaults.longitude" [zoom]="defaults.zoom"
+  [minZoom]="defaults.minZoom" (mapClick)="resetAnimation()" (mapClick)="checkDistance($event)">
+  <agm-marker *ngFor="let marker of markers" (markerClick)="clickMarker(marker)" [latitude]="marker.latitude"
+    [longitude]="marker.longitude" [animation]="marker.animation">
     <agm-snazzy-info-window [maxWidth]="350" [maxHeight]="350" [closeWhenOthersOpen]="true" closeOnMapClick="true">
       <ng-template>
         <img src="{{marker?.avatar}}">
       </ng-template>
     </agm-snazzy-info-window>
   </agm-marker>
-</agm-map>  
+</agm-map>
